@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -25,13 +26,19 @@ function App() {
   };
   return (
     <div>
-      <h1>Ask anything</h1>
-      <input
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-        placeholder="Ask something "
-      />
-      <button onClick={askAI}>ASK</button>
+      <div className="container">
+        <h1 id="title">Ask anything.</h1>
+
+        <div className="input-box">
+          <textarea
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            placeholder="Ask something..."
+          ></textarea>
+        </div>
+
+        <button onClick={askAI}>ASK</button>
+      </div>
       {loading && <p>Loading.....</p>}
       {answer && (
         <div>
@@ -39,6 +46,14 @@ function App() {
           <p>{answer}</p>
         </div>
       )}
+      <video
+        className="space-video"
+        src="/videos/web_screen_power_vid.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
     </div>
   );
 }
