@@ -5,6 +5,15 @@ function App() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
+  const [history, setHistory] = useState([]);
+  const history_retr = async () => {
+    const res = await fetch("http://127.0.0.1:8000/chat/history");
+    console.log(res);
+    const history = await res.json();
+    setHistory(history);
+    console.log(history);
+  };
+
   const askAI = async () => {
     if (!question.trim()) return;
 
@@ -32,6 +41,19 @@ function App() {
   };
   return (
     <div>
+      <button className="hst-btn" onClick={history_retr}>
+        HISTORY
+      </button>
+      {history && (
+        <div className="history-content">
+          {history.map((item) => (
+            <div key={item.id}>
+              <p>Question: {item.question}</p>
+              <p>Answer: {item.answer}</p>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="container">
         <h1 id="title">Ask anything.</h1>
 

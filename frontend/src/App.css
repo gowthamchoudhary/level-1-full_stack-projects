@@ -57,6 +57,7 @@ button:hover {
   box-shadow: 0 0 15px rgb(238, 236, 236);
 }
 .answes-box {
+  padding-top: 5px;
   width: 600px;
   height: 200px;
   background: #dfdddd;
@@ -70,70 +71,26 @@ button:hover {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-
-/* .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  height: 100vh;
-  gap: 20px;
-  align-items: flex-start;
-}
-textarea:focus {
-  border: 1px solid cyan;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-}
-.input-box {
-  display: inline-block;
-  padding: 2px;
-  border-radius: 12px;
-
-  background: linear-gradient(
-    90deg,
-    red,
-    orange,
-    yellow,
-    green,
-    cyan,
-    blue,
-    violet,
-    red
-  );
-
-  background-size: 300% 300%;
-  animation: moveGradient 8s linear infinite;
-
-  box-shadow:
-    0 0 10px rgba(255, 0, 255, 0.3),
-    0 0 20px rgba(0, 255, 255, 0.3),
-    0 0 30px rgba(0, 0, 255, 0.2);
-}
-
-textarea {
-  border: 2px solid rgba(18, 18, 18, 0.397);
-  width: 500px;
-  height: 150px;
-  padding: 12px;
-  border-radius: 10px;
-  background: #111;
-  color: white;
-  font-size: 16px;
-  margin-left: 50px;
+.hst-btn {
   outline: none;
-  line-height: 1.5;
-  font-family: "Poppins", sans-serif;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+  color: black;
+  font-family: Poppins, serif;
+  border-radius: 5px;
+  border: black;
 }
-@keyframes moveGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 300% 50%;
-  }
+
+.history-content {
+  background: rgb(142, 140, 140);
+  border: 2px #989696;
+  border-radius: 12px;
+  min-height: 0;
+  max-height: 500px;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(238, 236, 236, 0.211);
+  padding: 15px;
+  font-family: sans-serif;
+  font-size: 16px;
+  overflow-y: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
-.container {
-  position: relative;
-  z-index: 1;
-} */
