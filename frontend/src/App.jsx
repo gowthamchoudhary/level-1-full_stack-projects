@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import "./App.css";
 
@@ -12,17 +11,24 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/chat/ask", null, {
-        params: { question },
+      const params = new URLSearchParams({ question });
+      const res = await fetch(`http://127.0.0.1:8000/chat/ask?${params}`, {
+        method: "POST",
       });
 
-      setAnswer(res.data.answer);
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.detail || "Error fetching the answer");
+      }
+
+      setAnswer(data.answer);
     } catch (err) {
       console.error(err);
-      setAnswer("Error fetching the answer");
+      setAnswer(err.message);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
   return (
     <div>
@@ -30,19 +36,19 @@ function App() {
         <h1 id="title">Ask anything.</h1>
 
         <div className="input-box">
-          <textarea
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Ask something..."
-          ></textarea>
+          <div className="textarea-bg">
+            <textarea
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              placeholder="Ask something..."
+            ></textarea>
+          </div>
+          <button onClick={askAI}>ASK</button>
         </div>
-
-        <button onClick={askAI}>ASK</button>
       </div>
       {loading && <p>Loading.....</p>}
       {answer && (
-        <div>
-          <strong>ANSWER</strong>
+        <div className="answes-box">
           <p>{answer}</p>
         </div>
       )}
